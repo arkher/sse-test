@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSE Test</title>
+</head>
+<body>
+  <h1>SSE Test</h1>
+  <div>Enter message to be relayed.</div>
+  <form onsubmit="event.preventDefault(); sendMessage()">
+    <input type="text" id="message" placeholder="Enter your message">
+    <div>
+      <select id="to">
+        <option value="all">All</option>
+        <option value="this">This client only</option>
+      </select>
+      <button type="submit">Send</button>
+    </div>
+    <div id="errormsg"></div>
+  </form>
+  <div id="messages"></div>
+  <script src="script.js"></script>
+</body>
+</html>
