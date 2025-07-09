@@ -84,22 +84,22 @@ app.post("/api/events", async (req, res) => {
 		} else {
 			console.error("AI response failed:", aiResponse.error);
 			// Send fallback response
-			setTimeout(() => {
-				const fallbackResponse = "I'm sorry, I'm having trouble processing your message right now. Please try again in a moment.";
-				if (to === "this") {
-					const eventRes = clients[ip];
-					if (eventRes) {
-						eventRes.write(`data: ${JSON.stringify({ message: fallbackResponse, to, sender: "doctor" })}\n\n`);
-					}
-				} else {
-					for (const clientIp in clients) {
-						const eventRes = clients[clientIp];
-						if (eventRes) {
-							eventRes.write(`data: ${JSON.stringify({ message: fallbackResponse, to, sender: "doctor" })}\n\n`);
-						}
-					}
-				}
-			}, 1000);
+			// setTimeout(() => {
+			// 	const fallbackResponse = "I'm sorry, I'm having trouble processing your message right now. Please try again in a moment.";
+			// 	if (to === "this") {
+			// 		const eventRes = clients[ip];
+			// 		if (eventRes) {
+			// 			eventRes.write(`data: ${JSON.stringify({ message: fallbackResponse, to, sender: "doctor" })}\n\n`);
+			// 		}
+			// 	} else {
+			// 		for (const clientIp in clients) {
+			// 			const eventRes = clients[clientIp];
+			// 			if (eventRes) {
+			// 				eventRes.write(`data: ${JSON.stringify({ message: fallbackResponse, to, sender: "doctor" })}\n\n`);
+			// 			}
+			// 		}
+			// 	}
+			// }, 1000);
 		}
 
 		res.json({
